@@ -1,0 +1,30 @@
+class AppSvg {
+  static const String path = './assets/svg';
+  static const String arrowDown = '$path/arrow_down.svg';
+  static const String back = '$path/back_icon.svg';
+  static const String bed = '$path/bed_icon.svg';
+  static const String bookmark = '$path/bookmark.svg';
+  static const String camera = '$path/camera_icon.svg';
+  static const String comment = '$path/comment.svg';
+  static const String locationCurved = '$path/curved_location.svg';
+  static const String customerSupport = '$path/customerSupport.svg';
+  static const String discountTag = '$path/discount-tag.svg';
+  static const String favorite = '$path/favorite.svg';
+  static const String food = '$path/food_icon.svg';
+  static const String favoriteCurved = '$path/hard_curved_heart.svg';
+  static const String home = '$path/home.svg';
+  static const String hotel = '$path/hotel.svg';
+  static const String keys = '$path/keys.svg';
+  static const String more = '$path/more.svg';
+  static const String notification = '$path/notification.svg';
+  static const String plus = '$path/plus.svg';
+  static const String sent = '$path/sent.svg';
+  static const String share = '$path/share.svg';
+  static const String star = '$path/star-fill.svg';
+  static const String plusThick = '$path/thick_plus.svg';
+  static const String travel = '$path/travel.svg';
+  static const String tree = '$path/tree.svg';
+  static const String userCircle = '$path/user-circle.svg';
+  static const String view = '$path/view.svg';
+  static const String wifi = '$path/wifi.svg';
+}
