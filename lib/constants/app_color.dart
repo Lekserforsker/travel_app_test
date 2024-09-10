@@ -13,6 +13,7 @@ class AppColor {
   static const taWhiteFFF0F0F0 = Color(0XFFF0F0F0);
   static const taGrey7C7C7C = Color(0XFF7C7C7C);
   static const taGrey747474 = Color(0XFF747474);
+  static const taGreyC8C8C8 = Color(0XFFC8C8C8);
   static const taGrey454545 = Color(0XFF454545);
   static const taGrey6E6E6E = Color(0XFF6E6E6E);
   static const taRedFF3333 = Color(0XFFFF3333);

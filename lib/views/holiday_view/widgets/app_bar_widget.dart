@@ -9,31 +9,32 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     super.key,
   });
   @override
-  Size get preferredSize => const Size.fromHeight(30);
+  Size get preferredSize => const Size.fromHeight(40);
   @override
   Widget build(BuildContext context) {
     return AppBar(
       surfaceTintColor: AppColor.taWhiteFFFFFF,
       foregroundColor: AppColor.taWhiteFFFFFF,
       backgroundColor: AppColor.taWhiteFFFFFF,
-      toolbarHeight: 24,
-      titleSpacing: 4,
+      toolbarHeight: 40,
+      titleSpacing: 16,
       centerTitle: true,
-      leadingWidth: 30 + 16,
-      leading: Align(
-          alignment: Alignment.centerRight,
-          child: SvgPicture.asset(AppSvg.locationCurved)),
+      leadingWidth: 32 + 16,
+      leading: InkWell(
+        onTap: () => Navigator.pop(context),
+        child: Align(
+            alignment: Alignment.centerRight,
+            child: SvgPicture.asset(AppSvg.back)),
+      ),
       title: Row(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            'Hyderabad, India',
-            style:
-                AppTextStyle.regular16.copyWith(color: AppColor.taBlack1F1F1F),
+            'The Holiday',
+            style: AppTextStyle.bold24.copyWith(color: AppColor.taBlack191919),
           ),
-          SvgPicture.asset(AppSvg.arrowDown, height: 16, width: 16),
         ],
       ),
       actions: [

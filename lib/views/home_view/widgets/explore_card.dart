@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app_test/constants/routes.dart';
 
 import '../../../constants/app_color.dart';
 import '../../../constants/app_img.dart';
@@ -43,7 +44,10 @@ class ExploreCard extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           TextButtonWidget(
-            onTap: () => debugPrint("Book Now button pressed"),
+            onTap: () => {
+              debugPrint("Book Now button pressed"),
+              Navigator.pushNamed(context, holiday),
+            },
             size: const Size(69, 24),
             title: 'Book Now',
           )
