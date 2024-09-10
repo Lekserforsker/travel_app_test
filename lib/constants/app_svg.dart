@@ -7,9 +7,10 @@ class AppSvg {
   static const String camera = '$path/camera_icon.svg';
   static const String comment = '$path/comment.svg';
   static const String locationCurved = '$path/curved_location.svg';
-  static const String customerSupport = '$path/customerSupport.svg';
+  static const String customerSupport = '$path/customer_support.svg';
   static const String discountTag = '$path/discount-tag.svg';
   static const String favorite = '$path/favourite.svg';
+  static const String indianRupee = '$path/indian-rupee.svg';
   static const String food = '$path/food_icon.svg';
   static const String favoriteCurved = '$path/hard_curved_heart.svg';
   static const String home = '$path/home.svg';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:travel_app_test/constants/routes.dart';
 
 import '../../../constants/app_color.dart';
 import '../../../constants/app_img.dart';
@@ -25,36 +26,39 @@ class StoryList extends StatelessWidget {
         clipBehavior: Clip.none,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => index == 0
-            ? Column(
-                children: [
-                  Container(
-                    height: 105,
-                    width: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: AppColor.taGreyC8C8C8,
-                        strokeAlign: BorderSide.strokeAlignInside,
+            ? InkWell(
+                onTap: () => Navigator.pushNamed(context, searchResults),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 105,
+                      width: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: AppColor.taGreyC8C8C8,
+                          strokeAlign: BorderSide.strokeAlignInside,
+                        ),
                       ),
-                    ),
-                    child: Center(
-                      child: CircleAvatar(
-                        radius: 17,
-                        backgroundColor: AppColor.taPinkE8536D,
-                        child: SvgPicture.asset(
-                          AppSvg.plusThick,
+                      child: Center(
+                        child: CircleAvatar(
+                          radius: 17,
+                          backgroundColor: AppColor.taPinkE8536D,
+                          child: SvgPicture.asset(
+                            AppSvg.plusThick,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    "Post Story",
-                    style: AppTextStyle.medium12.copyWith(
-                      color: AppColor.taBlack1F1F1F,
-                    ),
-                  )
-                ],
+                    const SizedBox(height: 4),
+                    Text(
+                      "Post Story",
+                      style: AppTextStyle.medium12.copyWith(
+                        color: AppColor.taBlack1F1F1F,
+                      ),
+                    )
+                  ],
+                ),
               )
             : Column(
                 children: [

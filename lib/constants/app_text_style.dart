@@ -174,6 +174,15 @@ abstract class AppTextStyle {
     );
   }
 
+  static TextStyle get semiBold9 {
+    return const TextStyle(
+      fontSize: 9,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+      fontFamily: fontFamily,
+    );
+  }
+
   static TextStyle get semiBold10 {
     return const TextStyle(
       fontSize: 10,
@@ -276,6 +285,15 @@ abstract class AppTextStyle {
   static TextStyle get medium12 {
     return const TextStyle(
       fontSize: 12,
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+      fontFamily: fontFamily,
+    );
+  }
+
+  static TextStyle get medium8 {
+    return const TextStyle(
+      fontSize: 8,
       fontWeight: FontWeight.w500,
       color: Colors.black,
       fontFamily: fontFamily,

@@ -10,6 +10,7 @@ class TextButtonWidget extends StatelessWidget {
     required this.size,
     this.style,
     this.color,
+    this.borderColor,
     this.borderRadius,
   });
 
@@ -19,6 +20,7 @@ class TextButtonWidget extends StatelessWidget {
   final Size size;
   final double? borderRadius;
   final Color? color;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,14 @@ class TextButtonWidget extends StatelessWidget {
         minimumSize: MaterialStatePropertyAll(size),
         maximumSize: MaterialStatePropertyAll(size),
         padding: const MaterialStatePropertyAll(EdgeInsets.zero),
-        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 4))),
+        shape: MaterialStatePropertyAll(
+          RoundedRectangleBorder(
+            side: borderColor != null
+                ? BorderSide(color: borderColor!)
+                : BorderSide.none,
+            borderRadius: BorderRadius.circular(borderRadius ?? 4),
+          ),
+        ),
         backgroundColor: MaterialStatePropertyAll(
           color ?? AppColor.taPinkE8536D,
         ),
