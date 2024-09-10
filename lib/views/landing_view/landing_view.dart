@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:travel_app_test/constants/app_color.dart';
+import 'package:travel_app_test/constants/app_text_style.dart';
+import 'package:travel_app_test/views/home_view/home_view.dart';
+import 'package:travel_app_test/views/landing_view/widgets/app_bar_widget.dart';
+import '../../constants/app_svg.dart';
 
 class LandingView extends StatefulWidget {
   const LandingView({super.key});
@@ -8,8 +14,88 @@ class LandingView extends StatefulWidget {
 }
 
 class _LandingViewState extends State<LandingView> {
+  int activeIndex = 0;
+
+  void setActiveIndex(index) => setState(() => activeIndex = index);
+  final List<({String title, String path})> categories = [
+    (title: "Home", path: AppSvg.home),
+    (title: "Share", path: AppSvg.wifi),
+    (title: "Promotion", path: AppSvg.discountTag),
+    (title: "Profile", path: AppSvg.userCircle),
+  ];
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: const AppBarWidget(),
+      backgroundColor: AppColor.taWhiteFFFFFF,
+      floatingActionButton: Container(
+        margin: const EdgeInsets.only(bottom: 20),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+                blurRadius: 15,
+                offset: const Offset(0, 12),
+                color: AppColor.taBlack000000.withOpacity(.15)),
+          ],
+        ),
+        child: CircleAvatar(
+          radius: 26,
+          backgroundColor: AppColor.taPinkE8536D,
+          child: Center(
+            child: SvgPicture.asset(AppSvg.plus),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            const HomeView(),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                color: AppColor.taWhiteFFFFFF,
+                height: 66,
+                width: MediaQuery.sizeOf(context).width,
+                child: Row(
+                  children: [
+                    // ...categories.indexed.map
+                    for (final (index, obj) in categories.indexed) ...[
+                      if (index == 2) const Expanded(child: SizedBox()),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () => setActiveIndex(index),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                obj.path,
+                                color: activeIndex == index
+                                    ? AppColor.taBlack1F1F1F
+                                    : AppColor.taGrey7C7C7C,
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                obj.title,
+                                style: AppTextStyle.semiBold12.copyWith(
+                                  color: activeIndex == index
+                                      ? AppColor.taBlack1F1F1F
+                                      : AppColor.taGrey7C7C7C,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
