@@ -1,15 +1,20 @@
+//import 'package:travel_app_test/views/holiday_view/holiday_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:travel_app_test/view_model/holiday_viewmodel.dart';
 import '../../../constants/app_color.dart';
 import '../../../constants/app_svg.dart';
 import '../../../constants/app_text_style.dart';
 
+// ignore: must_be_immutable
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarWidget({
+  AppBarWidget({
     super.key,
   });
   @override
   Size get preferredSize => const Size.fromHeight(40);
+  //create incinstance from ViewModel
+  var data = HolidayViewmodel();
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -32,7 +37,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            'The Holiday',
+            data.title[0],
             style: AppTextStyle.bold24.copyWith(color: AppColor.taBlack191919),
           ),
         ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:travel_app_test/constants/app_color.dart';
 import 'package:travel_app_test/constants/app_text_style.dart';
+import 'package:travel_app_test/view_model/landing_viewmodel.dart';
 import 'package:travel_app_test/views/home_view/home_view.dart';
 import 'package:travel_app_test/views/landing_view/widgets/app_bar_widget.dart';
 import 'package:travel_app_test/views/landing_view/widgets/post_popup.dart';
@@ -16,15 +17,17 @@ class LandingView extends StatefulWidget {
 }
 
 class _LandingViewState extends State<LandingView> {
-  int activeIndex = 0;
+  // int activeIndex = 0;
+  //create incinstance from ViewModel
+  var data = LandingViewmodel();
 
-  void setActiveIndex(index) => setState(() => activeIndex = index);
-  final List<({String title, String path})> categories = [
-    (title: "Home", path: AppSvg.home),
-    (title: "Share", path: AppSvg.wifi),
-    (title: "Promotion", path: AppSvg.discountTag),
-    (title: "Profile", path: AppSvg.userCircle),
-  ];
+  void setActiveIndex(index) => setState(() => data.activeIndex = index);
+  // final List<({String title, String path})> categories = [
+  //   (title: "Home", path: AppSvg.home),
+  //   (title: "Share", path: AppSvg.wifi),
+  //   (title: "Promotion", path: AppSvg.discountTag),
+  //   (title: "Profile", path: AppSvg.userCircle),
+  // ];
 
   final pages = [
     const HomeView(),
@@ -40,7 +43,7 @@ class _LandingViewState extends State<LandingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(),
+      appBar: AppBarWidget(),
       backgroundColor: AppColor.taWhiteFFFFFF,
       floatingActionButton: Container(
         margin: const EdgeInsets.only(bottom: 20),
@@ -74,7 +77,7 @@ class _LandingViewState extends State<LandingView> {
       body: SafeArea(
         child: Stack(
           children: [
-            pages[activeIndex],
+            pages[data.activeIndex],
             PostPopup(animate: animate),
             Align(
               alignment: Alignment.bottomCenter,
@@ -84,7 +87,7 @@ class _LandingViewState extends State<LandingView> {
                 width: MediaQuery.sizeOf(context).width,
                 child: Row(
                   children: [
-                    for (final (index, obj) in categories.indexed) ...[
+                    for (final (index, obj) in data.categories.indexed) ...[
                       if (index == 2) const Expanded(child: SizedBox()),
                       Expanded(
                         child: InkWell(
@@ -95,7 +98,7 @@ class _LandingViewState extends State<LandingView> {
                             children: [
                               SvgPicture.asset(
                                 obj.path,
-                                color: activeIndex == index
+                                color: data.activeIndex == index
                                     ? AppColor.taBlack1F1F1F
                                     : AppColor.taGrey7C7C7C,
                               ),
@@ -103,7 +106,7 @@ class _LandingViewState extends State<LandingView> {
                               Text(
                                 obj.title,
                                 style: AppTextStyle.semiBold12.copyWith(
-                                  color: activeIndex == index
+                                  color: data.activeIndex == index
                                       ? AppColor.taBlack1F1F1F
                                       : AppColor.taGrey7C7C7C,
                                 ),

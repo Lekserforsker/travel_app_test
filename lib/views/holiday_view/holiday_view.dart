@@ -16,14 +16,14 @@ class _HolidayViewState extends State<HolidayView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.taWhiteFFFFFF,
-      appBar: const AppBarWidget(),
+      appBar: AppBarWidget(),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         children: [
           const SizedBox(height: 18),
           StoryList(),
           const SizedBox(height: 32),
-          const PostList(),
+          PostList(),
         ],
       ),
     );

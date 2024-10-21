@@ -16,14 +16,14 @@ class _HomeViewState extends State<HomeView> {
     return SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
-            ExploreCard(),
-            CategoryList(),
+            const SizedBox(height: 20),
+            const ExploreCard(),
+            const CategoryList(),
             DestinationList(),
-            SizedBox(height: 100)
+            const SizedBox(height: 100)
           ],
         ),
       ),

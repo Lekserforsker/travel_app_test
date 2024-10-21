@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:travel_app_test/view_model/landing_viewmodel.dart';
 import '../../../constants/app_color.dart';
 import '../../../constants/app_svg.dart';
 import '../../../constants/app_text_style.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarWidget({
+  AppBarWidget({
     super.key,
   });
   @override
   Size get preferredSize => const Size.fromHeight(30);
+  //create incinstance from ViewModel
+  var data = LandingViewmodel();
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -29,7 +32,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            'Hyderabad, India',
+            data.currentlocation,
             style:
                 AppTextStyle.regular16.copyWith(color: AppColor.taBlack1F1F1F),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:travel_app_test/constants/routes.dart';
+import 'package:travel_app_test/view_model/holiday_viewmodel.dart';
 
 import '../../../constants/app_color.dart';
 import '../../../constants/app_img.dart';
@@ -10,14 +11,16 @@ import '../../../constants/app_text_style.dart';
 class StoryList extends StatelessWidget {
   StoryList({super.key});
 
-  final List<({String title, String path})> categories = [
+  /* final List<({String title, String path})> categories = [
     (title: "Jhonson", path: AppImg.bgImg1),
     (title: "Michal", path: AppImg.bgImg2),
     (title: "Adrian", path: AppImg.bgImg3),
     (title: "Jhonson", path: AppImg.bgImg1),
     (title: "Michal", path: AppImg.bgImg2),
     (title: "Adrian", path: AppImg.bgImg3),
-  ];
+  ]; */
+  //create incinstance from ViewModel
+  var data = HolidayViewmodel();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -52,7 +55,7 @@ class StoryList extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      "Post Story",
+                      data.story,
                       style: AppTextStyle.medium12.copyWith(
                         color: AppColor.taBlack1F1F1F,
                       ),
@@ -68,14 +71,14 @@ class StoryList extends StatelessWidget {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(
-                          categories[index - 1].path,
+                          data.categories[index - 1].path,
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    categories[index - 1].title,
+                    data.categories[index - 1].title,
                     style: AppTextStyle.medium12.copyWith(
                       color: AppColor.taBlack1F1F1F,
                     ),
@@ -83,7 +86,7 @@ class StoryList extends StatelessWidget {
                 ],
               ),
         separatorBuilder: (context, index) => const SizedBox(width: 8),
-        itemCount: categories.length + 1,
+        itemCount: data.categories.length + 1,
       ),
     );
   }

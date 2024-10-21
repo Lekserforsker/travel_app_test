@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:travel_app_test/constants/app_svg.dart';
+import 'package:travel_app_test/view_model/home_viewmodel.dart';
 import '../../../constants/app_color.dart';
 import '../../../constants/app_text_style.dart';
 
@@ -12,18 +13,19 @@ class CategoryList extends StatefulWidget {
 }
 
 class _CategoryListState extends State<CategoryList> {
-  int activeIndex = 1;
+  //create incinstance from ViewModel
+  var data = HomeViewmodel();
 
-  void setActiveIndex(index) => setState(() => activeIndex = index);
-  final List<({String title, String path})> categories = [
-    (title: "Holidays", path: AppSvg.tree),
-    (title: "Rental", path: AppSvg.keys),
-    (title: "Travel Partner", path: AppSvg.travel),
-    (title: "Hotels", path: AppSvg.hotel),
-    (title: "Holidays", path: AppSvg.tree),
-    (title: "Hotels", path: AppSvg.hotel),
-    (title: "Travel Partner", path: AppSvg.travel),
-  ];
+  void setActiveIndex(index) => setState(() => data.activeIndex = index);
+  // final List<({String title, String path})> categories = [
+  //   (title: "Holidays", path: AppSvg.tree),
+  //   (title: "Rental", path: AppSvg.keys),
+  //   (title: "Travel Partner", path: AppSvg.travel),
+  //   (title: "Hotels", path: AppSvg.hotel),
+  //   (title: "Holidays", path: AppSvg.tree),
+  //   (title: "Hotels", path: AppSvg.hotel),
+  //   (title: "Travel Partner", path: AppSvg.travel),
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class _CategoryListState extends State<CategoryList> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Categories",
+          data.categorie,
           style: AppTextStyle.semiBold18.copyWith(
             color: AppColor.taBlack1F1F1F,
           ),
@@ -42,7 +44,7 @@ class _CategoryListState extends State<CategoryList> {
           child: ListView.separated(
             separatorBuilder: (context, index) => const SizedBox(width: 12),
             scrollDirection: Axis.horizontal,
-            itemCount: categories.length,
+            itemCount: data.categories.length,
             clipBehavior: Clip.none,
             // itemExtent: 74 + 16,
             itemBuilder: (context, index) => InkWell(
@@ -53,12 +55,12 @@ class _CategoryListState extends State<CategoryList> {
                 clipBehavior: Clip.none,
                 // margin: const EdgeInsets.only(right: 12),
                 decoration: BoxDecoration(
-                  color: index == activeIndex
+                  color: index == data.activeIndex
                       ? AppColor.taPinkE8536D
                       : AppColor.taWhiteFFFFFF,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
-                    if (activeIndex == index)
+                    if (data.activeIndex == index)
                       BoxShadow(
                         blurRadius: 10,
                         offset: const Offset(0, 8),
@@ -67,7 +69,7 @@ class _CategoryListState extends State<CategoryList> {
                   ],
                   border: Border.all(
                     strokeAlign: BorderSide.strokeAlignInside,
-                    color: index == activeIndex
+                    color: index == data.activeIndex
                         ? AppColor.taWhiteFFE9F4FF
                         : AppColor.taWhiteFFF0F0F0,
                     width: 1,
@@ -78,17 +80,17 @@ class _CategoryListState extends State<CategoryList> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SvgPicture.asset(
-                      categories[index].path,
-                      color: index == activeIndex
+                      data.categories[index].path,
+                      color: index == data.activeIndex
                           ? AppColor.taWhiteFFFFFF
                           : AppColor.taBlack191919,
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      categories[index].title.toString(),
+                      data.categories[index].title.toString(),
                       textAlign: TextAlign.center,
                       style: AppTextStyle.medium10.copyWith(
-                        color: index == activeIndex
+                        color: index == data.activeIndex
                             ? AppColor.taWhiteFFFFFF
                             : AppColor.taBlack1F1F1F,
                       ),

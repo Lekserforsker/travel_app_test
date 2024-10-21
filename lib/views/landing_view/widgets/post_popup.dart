@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app_test/constants/app_color.dart';
 import 'package:travel_app_test/constants/app_text_style.dart';
+import 'package:travel_app_test/view_model/landing_viewmodel.dart';
 import 'package:travel_app_test/widgets/text_button_widget.dart';
 
 class PostPopup extends StatelessWidget {
-  const PostPopup({super.key, required this.animate});
+  PostPopup({super.key, required this.animate});
 
   final bool animate;
+  //create incinstance from ViewModel
+  var data = LandingViewmodel();
   @override
   Widget build(BuildContext context) {
     return AnimatedPositioned(
@@ -39,14 +42,14 @@ class PostPopup extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Upload New Post",
+                    data.upload,
                     style: AppTextStyle.bold16.copyWith(
                       color: AppColor.taBlack1F1F1F,
                     ),
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    "Click “+” Icon to create new post",
+                    data.plusicon,
                     style: AppTextStyle.medium14.copyWith(
                       color: AppColor.taGrey7C7C7C,
                     ),
@@ -61,7 +64,7 @@ class PostPopup extends StatelessWidget {
                         borderRadius: 100,
                         style: AppTextStyle.semiBold14
                             .copyWith(color: AppColor.taWhiteFFFFFF),
-                        title: 'Regular post',
+                        title: data.regular_post,
                       ),
                       TextButtonWidget(
                         onTap: () => {},
@@ -71,7 +74,7 @@ class PostPopup extends StatelessWidget {
                         style: AppTextStyle.medium14
                             .copyWith(color: AppColor.taPinkE8536D),
                         borderRadius: 100,
-                        title: 'Partner post',
+                        title: data.partner_post,
                       ),
                     ],
                   ),

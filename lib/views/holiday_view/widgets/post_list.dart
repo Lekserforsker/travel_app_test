@@ -4,11 +4,13 @@ import 'package:travel_app_test/constants/app_color.dart';
 import 'package:travel_app_test/constants/app_img.dart';
 import 'package:travel_app_test/constants/app_svg.dart';
 import 'package:travel_app_test/constants/app_text_style.dart';
+import 'package:travel_app_test/view_model/holiday_viewmodel.dart';
 import 'package:travel_app_test/widgets/text_button_widget.dart';
 
 class PostList extends StatelessWidget {
-  const PostList({super.key});
-
+  PostList({super.key});
+  //create incinstance from ViewModel
+  var data = HolidayViewmodel();
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -32,13 +34,13 @@ class PostList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Courtney346",
+                      data.username, //"Courtney346",
                       style: AppTextStyle.semiBold14.copyWith(
                         color: AppColor.taBlack212B36,
                       ),
                     ),
                     Text(
-                      "Suggested for you",
+                      data.suggest, //"Suggested for you",
                       style: AppTextStyle.regular10.copyWith(
                         color: AppColor.taGrey747474,
                       ),
@@ -50,7 +52,7 @@ class PostList extends StatelessWidget {
                   onTap: () => debugPrint("See More button pressed"),
                   size: const Size(64, 28),
                   borderRadius: 8,
-                  title: 'Follow',
+                  title: data.title[1],
                 ),
                 SizedBox(width: 2),
                 SvgPicture.asset(
@@ -62,7 +64,7 @@ class PostList extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              "Travel can be done by foot, bicycle, automobile, train, boat, bus, airplane, ship or other means, with or without luggage, ",
+              data.textarea,
               style: AppTextStyle.regular12.copyWith(
                 color: AppColor.taGrey454545,
               ),
@@ -98,7 +100,7 @@ class PostList extends StatelessWidget {
                 SvgPicture.asset(AppSvg.favorite, height: 15, width: 15),
                 const SizedBox(width: 4),
                 Text(
-                  "480 likes",
+                  data.likes,
                   style: AppTextStyle.regular10.copyWith(
                     color: AppColor.taGrey747474,
                   ),
