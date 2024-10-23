@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
+
 import '../../../constants/app_img.dart';
 
-class HolidayViewmodel {
+class HolidayViewmodel extends ChangeNotifier {
   //this will be provide all data the view needs
   List title = ['The Holiday', 'Follow'];
   String username = 'Courtney346'; //or ""
@@ -18,4 +20,7 @@ class HolidayViewmodel {
     (title: "Michal", path: AppImg.bgImg2),
     (title: "Adrian", path: AppImg.bgImg3),
   ];
+
+  // Fucntion => getUserDetails()
+  // Fucntion => getCategories()
 }
