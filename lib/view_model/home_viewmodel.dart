@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:travel_app_test/constants/app_svg.dart';
 
-class HomeViewmodel {
+class HomeViewmodel extends ChangeNotifier {
   //this will be provide all data the view needs
-  int activeIndex = 1;
   String categorie = "Categories";
   String destination = "What Destination do you\nlike to go to?";
   String title = 'See More';

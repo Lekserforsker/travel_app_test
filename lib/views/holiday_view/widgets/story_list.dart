@@ -7,6 +7,7 @@ import '../../../constants/app_color.dart';
 import '../../../constants/app_img.dart';
 import '../../../constants/app_svg.dart';
 import '../../../constants/app_text_style.dart';
+import 'package:provider/provider.dart';
 
 class StoryList extends StatelessWidget {
   StoryList({super.key});
@@ -20,74 +21,144 @@ class StoryList extends StatelessWidget {
     (title: "Adrian", path: AppImg.bgImg3),
   ]; */
   //create incinstance from ViewModel
-  var data = HolidayViewmodel();
+  //var data = HolidayViewmodel();
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 129,
-      child: ListView.separated(
-        clipBehavior: Clip.none,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => index == 0
-            ? InkWell(
-                onTap: () => Navigator.pushNamed(context, searchResults),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 105,
-                      width: 80,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: AppColor.taGreyC8C8C8,
-                          strokeAlign: BorderSide.strokeAlignInside,
+    return Consumer<HolidayViewmodel>(
+      builder: (context, holidayViewmodel, child) {
+        return SizedBox(
+          height: 129,
+          child: ListView.separated(
+            clipBehavior: Clip.none,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) => index == 0
+                ? InkWell(
+                    onTap: () => Navigator.pushNamed(context, searchResults),
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 105,
+                          width: 80,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: AppColor.taGreyC8C8C8,
+                              strokeAlign: BorderSide.strokeAlignInside,
+                            ),
+                          ),
+                          child: Center(
+                            child: CircleAvatar(
+                              radius: 17,
+                              backgroundColor: AppColor.taPinkE8536D,
+                              child: SvgPicture.asset(
+                                AppSvg.plusThick,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      child: Center(
-                        child: CircleAvatar(
-                          radius: 17,
-                          backgroundColor: AppColor.taPinkE8536D,
-                          child: SvgPicture.asset(
-                            AppSvg.plusThick,
+                        const SizedBox(height: 4),
+                        Text(
+                          holidayViewmodel.story,
+                          style: AppTextStyle.medium12.copyWith(
+                            color: AppColor.taBlack1F1F1F,
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                : Column(
+                    children: [
+                      Container(
+                        height: 105,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(
+                              holidayViewmodel.categories[index - 1].path,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      data.story,
-                      style: AppTextStyle.medium12.copyWith(
-                        color: AppColor.taBlack1F1F1F,
-                      ),
-                    )
-                  ],
-                ),
-              )
-            : Column(
-                children: [
-                  Container(
-                    height: 105,
-                    width: 80,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                          data.categories[index - 1].path,
+                      const SizedBox(height: 4),
+                      Text(
+                        holidayViewmodel.categories[index - 1].title,
+                        style: AppTextStyle.medium12.copyWith(
+                          color: AppColor.taBlack1F1F1F,
                         ),
-                      ),
-                    ),
+                      )
+                    ],
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    data.categories[index - 1].title,
-                    style: AppTextStyle.medium12.copyWith(
-                      color: AppColor.taBlack1F1F1F,
-                    ),
-                  )
-                ],
-              ),
-        separatorBuilder: (context, index) => const SizedBox(width: 8),
-        itemCount: data.categories.length + 1,
-      ),
+            separatorBuilder: (context, index) => const SizedBox(width: 8),
+            itemCount: holidayViewmodel.categories.length + 1,
+          ),
+        );
+      },
     );
+    // return SizedBox(
+    //   height: 129,
+    //   child: ListView.separated(
+    //     clipBehavior: Clip.none,
+    //     scrollDirection: Axis.horizontal,
+    //     itemBuilder: (context, index) => index == 0
+    //         ? InkWell(
+    //             onTap: () => Navigator.pushNamed(context, searchResults),
+    //             child: Column(
+    //               children: [
+    //                 Container(
+    //                   height: 105,
+    //                   width: 80,
+    //                   decoration: BoxDecoration(
+    //                     borderRadius: BorderRadius.circular(12),
+    //                     border: Border.all(
+    //                       color: AppColor.taGreyC8C8C8,
+    //                       strokeAlign: BorderSide.strokeAlignInside,
+    //                     ),
+    //                   ),
+    //                   child: Center(
+    //                     child: CircleAvatar(
+    //                       radius: 17,
+    //                       backgroundColor: AppColor.taPinkE8536D,
+    //                       child: SvgPicture.asset(
+    //                         AppSvg.plusThick,
+    //                       ),
+    //                     ),
+    //                   ),
+    //                 ),
+    //                 const SizedBox(height: 4),
+    //                 Text(
+    //                   data.story,
+    //                   style: AppTextStyle.medium12.copyWith(
+    //                     color: AppColor.taBlack1F1F1F,
+    //                   ),
+    //                 )
+    //               ],
+    //             ),
+    //           )
+    //         : Column(
+    //             children: [
+    //               Container(
+    //                 height: 105,
+    //                 width: 80,
+    //                 decoration: BoxDecoration(
+    //                   image: DecorationImage(
+    //                     image: AssetImage(
+    //                       data.categories[index - 1].path,
+    //                     ),
+    //                   ),
+    //                 ),
+    //               ),
+    //               const SizedBox(height: 4),
+    //               Text(
+    //                 data.categories[index - 1].title,
+    //                 style: AppTextStyle.medium12.copyWith(
+    //                   color: AppColor.taBlack1F1F1F,
+    //                 ),
+    //               )
+    //             ],
+    //           ),
+    //     separatorBuilder: (context, index) => const SizedBox(width: 8),
+    //     itemCount: data.categories.length + 1,
+    //   ),
+    // );
   }
 }

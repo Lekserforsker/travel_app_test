@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:travel_app_test/constants/app_color.dart';
 import 'package:travel_app_test/constants/app_text_style.dart';
+import 'package:travel_app_test/view_model/home_viewmodel.dart';
 import 'package:travel_app_test/view_model/landing_viewmodel.dart';
 import 'package:travel_app_test/widgets/text_button_widget.dart';
 
@@ -9,82 +11,159 @@ class PostPopup extends StatelessWidget {
 
   final bool animate;
   //create incinstance from ViewModel
-  var data = LandingViewmodel();
+  //var data = LandingViewmodel();
   @override
   Widget build(BuildContext context) {
-    return AnimatedPositioned(
-      duration: const Duration(milliseconds: 150),
-      bottom: animate ? 100 : 0,
-      left: MediaQuery.sizeOf(context).width * .08,
-      right: MediaQuery.sizeOf(context).width * .08,
-      child: AnimatedScale(
-        duration: const Duration(milliseconds: 150),
-        scale: animate ? 1 : 0,
-        child: Container(
-          width: 315,
-          height: 160,
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                  blurRadius: 10,
-                  color: AppColor.taGrey7C7C7C.withOpacity(.25),
-                  offset: const Offset(0, 5)),
-            ],
-          ),
-          child: ClipPath(
-            clipper: CenterClip(),
+    return Consumer<LandingViewmodel>(
+      builder: (context, landingViewmodel, child) {
+        return AnimatedPositioned(
+          duration: const Duration(milliseconds: 150),
+          bottom: animate ? 100 : 0,
+          left: MediaQuery.sizeOf(context).width * .08,
+          right: MediaQuery.sizeOf(context).width * .08,
+          child: AnimatedScale(
+            duration: const Duration(milliseconds: 150),
+            scale: animate ? 1 : 0,
             child: Container(
               width: 315,
               height: 160,
-              color: AppColor.taWhiteFFFFFF,
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    data.upload,
-                    style: AppTextStyle.bold16.copyWith(
-                      color: AppColor.taBlack1F1F1F,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    data.plusicon,
-                    style: AppTextStyle.medium14.copyWith(
-                      color: AppColor.taGrey7C7C7C,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 10,
+                      color: AppColor.taGrey7C7C7C.withOpacity(.25),
+                      offset: const Offset(0, 5)),
+                ],
+              ),
+              child: ClipPath(
+                clipper: CenterClip(),
+                child: Container(
+                  width: 315,
+                  height: 160,
+                  color: AppColor.taWhiteFFFFFF,
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextButtonWidget(
-                        onTap: () => {},
-                        size: const Size(140, 35),
-                        borderRadius: 100,
-                        style: AppTextStyle.semiBold14
-                            .copyWith(color: AppColor.taWhiteFFFFFF),
-                        title: data.regular_post,
+                      Text(
+                        landingViewmodel.upload,
+                        style: AppTextStyle.bold16.copyWith(
+                          color: AppColor.taBlack1F1F1F,
+                        ),
                       ),
-                      TextButtonWidget(
-                        onTap: () => {},
-                        size: const Size(140, 35),
-                        borderColor: AppColor.taPinkE8536D,
-                        color: AppColor.taWhiteFFFFFF,
-                        style: AppTextStyle.medium14
-                            .copyWith(color: AppColor.taPinkE8536D),
-                        borderRadius: 100,
-                        title: data.partner_post,
+                      const SizedBox(height: 6),
+                      Text(
+                        landingViewmodel.plusicon,
+                        style: AppTextStyle.medium14.copyWith(
+                          color: AppColor.taGrey7C7C7C,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButtonWidget(
+                            onTap: () => {},
+                            size: const Size(140, 35),
+                            borderRadius: 100,
+                            style: AppTextStyle.semiBold14
+                                .copyWith(color: AppColor.taWhiteFFFFFF),
+                            title: landingViewmodel.regular_post,
+                          ),
+                          TextButtonWidget(
+                            onTap: () => {},
+                            size: const Size(140, 35),
+                            borderColor: AppColor.taPinkE8536D,
+                            color: AppColor.taWhiteFFFFFF,
+                            style: AppTextStyle.medium14
+                                .copyWith(color: AppColor.taPinkE8536D),
+                            borderRadius: 100,
+                            title: landingViewmodel.partner_post,
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
+    // return AnimatedPositioned(
+    //   duration: const Duration(milliseconds: 150),
+    //   bottom: animate ? 100 : 0,
+    //   left: MediaQuery.sizeOf(context).width * .08,
+    //   right: MediaQuery.sizeOf(context).width * .08,
+    //   child: AnimatedScale(
+    //     duration: const Duration(milliseconds: 150),
+    //     scale: animate ? 1 : 0,
+    //     child: Container(
+    //       width: 315,
+    //       height: 160,
+    //       decoration: BoxDecoration(
+    //         boxShadow: [
+    //           BoxShadow(
+    //               blurRadius: 10,
+    //               color: AppColor.taGrey7C7C7C.withOpacity(.25),
+    //               offset: const Offset(0, 5)),
+    //         ],
+    //       ),
+    //       child: ClipPath(
+    //         clipper: CenterClip(),
+    //         child: Container(
+    //           width: 315,
+    //           height: 160,
+    //           color: AppColor.taWhiteFFFFFF,
+    //           padding: const EdgeInsets.all(20),
+    //           child: Column(
+    //             crossAxisAlignment: CrossAxisAlignment.start,
+    //             children: [
+    //               Text(
+    //                 data.upload,
+    //                 style: AppTextStyle.bold16.copyWith(
+    //                   color: AppColor.taBlack1F1F1F,
+    //                 ),
+    //               ),
+    //               const SizedBox(height: 6),
+    //               Text(
+    //                 data.plusicon,
+    //                 style: AppTextStyle.medium14.copyWith(
+    //                   color: AppColor.taGrey7C7C7C,
+    //                 ),
+    //               ),
+    //               const SizedBox(height: 20),
+    //               Row(
+    //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //                 children: [
+    //                   TextButtonWidget(
+    //                     onTap: () => {},
+    //                     size: const Size(140, 35),
+    //                     borderRadius: 100,
+    //                     style: AppTextStyle.semiBold14
+    //                         .copyWith(color: AppColor.taWhiteFFFFFF),
+    //                     title: data.regular_post,
+    //                   ),
+    //                   TextButtonWidget(
+    //                     onTap: () => {},
+    //                     size: const Size(140, 35),
+    //                     borderColor: AppColor.taPinkE8536D,
+    //                     color: AppColor.taWhiteFFFFFF,
+    //                     style: AppTextStyle.medium14
+    //                         .copyWith(color: AppColor.taPinkE8536D),
+    //                     borderRadius: 100,
+    //                     title: data.partner_post,
+    //                   ),
+    //                 ],
+    //               ),
+    //             ],
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 }
 
