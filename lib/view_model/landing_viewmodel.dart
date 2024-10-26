@@ -16,4 +16,7 @@ class LandingViewmodel extends ChangeNotifier {
     (title: "Promotion", path: AppSvg.discountTag),
     (title: "Profile", path: AppSvg.userCircle),
   ];
+
+  //Notify Listeners Whenever I modify the state in any of my ViewModels
+  //create func to get data from model
 }

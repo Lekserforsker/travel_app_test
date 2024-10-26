@@ -4,7 +4,7 @@ import '../../../constants/app_img.dart';
 
 class HolidayViewmodel extends ChangeNotifier {
   //this will be provide all data the view needs
-  List title = ['The Holiday', 'Follow'];
+  String title = 'Follow';
   String username = 'Courtney346'; //or ""
   String suggest = 'Suggested for you';
   String textarea =
@@ -20,7 +20,8 @@ class HolidayViewmodel extends ChangeNotifier {
     (title: "Michal", path: AppImg.bgImg2),
     (title: "Adrian", path: AppImg.bgImg3),
   ];
-
+//Notify Listeners Whenever I modify the state in any of my ViewModels
+  //create func to get data from model
   // Fucntion => getUserDetails()
   // Fucntion => getCategories()
 }

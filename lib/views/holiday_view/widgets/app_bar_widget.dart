@@ -14,7 +14,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(40);
   //create incinstance from ViewModel
-  var data = HolidayViewmodel();
+  //var data = HolidayViewmodel();
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -37,7 +37,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            data.title[0],
+            'The Holiday',
             style: AppTextStyle.bold24.copyWith(color: AppColor.taBlack191919),
           ),
         ],

@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
           holiday: (context) => const HolidayView(),
         },
         initialRoute: landing,
+        //Using Named Routes for Navigating Between Screens/views if it need
       ),
     );
   }

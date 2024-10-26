@@ -19,4 +19,7 @@ class HomeViewmodel extends ChangeNotifier {
     (title: "Hotels", path: AppSvg.hotel),
     (title: "Travel Partner", path: AppSvg.travel),
   ];
+
+  //Notify Listeners Whenever I modify the state in any of my ViewModels
+  //create func to get data from model
 }

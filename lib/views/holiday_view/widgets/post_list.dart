@@ -55,7 +55,7 @@ class PostList extends StatelessWidget {
                       onTap: () => debugPrint("See More button pressed"),
                       size: const Size(64, 28),
                       borderRadius: 8,
-                      title: holidayViewmodel.title[1],
+                      title: holidayViewmodel.title,
                     ),
                     SizedBox(width: 2),
                     SvgPicture.asset(
