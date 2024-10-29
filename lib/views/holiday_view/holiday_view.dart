@@ -5,7 +5,9 @@ import 'package:travel_app_test/views/holiday_view/widgets/post_list.dart';
 import 'package:travel_app_test/views/holiday_view/widgets/story_list.dart';
 
 class HolidayView extends StatefulWidget {
-  const HolidayView({super.key});
+  final bool showBackButton;
+  const HolidayView(
+      {super.key, this.showBackButton = false}); // Default to false
 
   @override
   State<HolidayView> createState() => _HolidayViewState();
@@ -16,7 +18,8 @@ class _HolidayViewState extends State<HolidayView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.taWhiteFFFFFF,
-      appBar: AppBarWidget(),
+      // Pass true to Show back button for book now button(old)
+      appBar: AppBarWidget(showBackButton: widget.showBackButton),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         children: [

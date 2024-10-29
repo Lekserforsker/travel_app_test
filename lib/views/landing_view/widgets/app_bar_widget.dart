@@ -9,6 +9,7 @@ import '../../../constants/app_text_style.dart';
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   AppBarWidget({
     super.key,
+    required bool showBackButton,
   });
   @override
   Size get preferredSize => const Size.fromHeight(30);

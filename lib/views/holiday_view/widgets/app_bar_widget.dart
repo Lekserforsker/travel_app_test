@@ -8,9 +8,13 @@ import '../../../constants/app_text_style.dart';
 
 // ignore: must_be_immutable
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
+  //boolean parameter to control the visibility of the back button
+  final bool showBackButton;
   AppBarWidget({
     super.key,
+    this.showBackButton = false, // Default to false
   });
+
   @override
   Size get preferredSize => const Size.fromHeight(40);
   //create incinstance from ViewModel
@@ -25,12 +29,14 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       titleSpacing: 16,
       centerTitle: true,
       leadingWidth: 32 + 16,
-      leading: InkWell(
-        onTap: () => Navigator.pop(context),
-        child: Align(
-            alignment: Alignment.centerRight,
-            child: SvgPicture.asset(AppSvg.back)),
-      ),
+      leading: showBackButton // Show back button conditionally
+          ? InkWell(
+              onTap: () => Navigator.pop(context),
+              child: Align(
+                  alignment: Alignment.centerRight,
+                  child: SvgPicture.asset(AppSvg.back)),
+            )
+          : null, // No leading widget if back button is not shown
       title: Row(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
