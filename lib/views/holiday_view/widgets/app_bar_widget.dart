@@ -10,10 +10,13 @@ import '../../../constants/app_text_style.dart';
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   //boolean parameter to control the visibility of the back button
   final bool showBackButton;
-  AppBarWidget({
-    super.key,
-    this.showBackButton = false, // Default to false
-  });
+  final bool showNotifi;
+  final bool showShare;
+  AppBarWidget(
+      {super.key,
+      this.showBackButton = false, // Default to false
+      this.showNotifi = false,
+      this.showShare = false});
 
   @override
   Size get preferredSize => const Size.fromHeight(40);
@@ -49,15 +52,17 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       actions: [
-        InkWell(
-          onTap: () => debugPrint("notification button pressed"),
-          child: SvgPicture.asset(AppSvg.notification, height: 20, width: 19),
-        ),
+        if (!showNotifi) // Only show the notification button if NOT in the Share view
+          InkWell(
+            onTap: () => debugPrint("notification button pressed"),
+            child: SvgPicture.asset(AppSvg.notification, height: 20, width: 19),
+          ),
         const SizedBox(width: 10.5),
-        InkWell(
-          onTap: () => debugPrint("share button pressed"),
-          child: SvgPicture.asset(AppSvg.sent, height: 19, width: 19),
-        ),
+        if (!showShare) // Only show the notification button if NOT in the Share view
+          InkWell(
+            onTap: () => debugPrint("share button pressed"),
+            child: SvgPicture.asset(AppSvg.sent, height: 19, width: 19),
+          ),
         const SizedBox(width: 16),
       ],
     );

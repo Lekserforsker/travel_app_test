@@ -53,7 +53,10 @@ class ExploreCard extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const HolidayView(
-                      showBackButton: true), // Pass true to show back button
+                    showBackButton: true, // Pass true to show back button
+                    showNotifi: false,
+                    showShare: false,
+                  ),
                 ),
               ),
             },

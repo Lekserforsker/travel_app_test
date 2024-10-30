@@ -10,6 +10,8 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   AppBarWidget({
     super.key,
     required bool showBackButton,
+    required bool showNotifi,
+    required bool showShare,
   });
   @override
   Size get preferredSize => const Size.fromHeight(30);

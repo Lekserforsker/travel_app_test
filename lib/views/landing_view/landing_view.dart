@@ -49,6 +49,8 @@ class _LandingViewState extends State<LandingView> {
         return Scaffold(
           appBar: AppBarWidget(
             showBackButton: activeIndex != 1, // Hide back button for ShareView
+            showNotifi: activeIndex == 1,
+            showShare: activeIndex == 1,
           ),
           backgroundColor: AppColor.taWhiteFFFFFF,
           floatingActionButton: Container(
