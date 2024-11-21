@@ -7,6 +7,7 @@ import 'package:travel_app_test/view_model/landing_viewmodel.dart';
 import 'package:travel_app_test/views/home_view/home_view.dart';
 import 'package:travel_app_test/views/landing_view/widgets/app_bar_widget.dart';
 import 'package:travel_app_test/views/landing_view/widgets/post_popup.dart';
+import 'package:travel_app_test/views/profile_view/profile_view.dart';
 import 'package:travel_app_test/views/share_view/widgets/share_view.dart';
 import 'package:travel_app_test/widgets/text_button_widget.dart';
 import '../../constants/app_svg.dart';
@@ -35,7 +36,7 @@ class _LandingViewState extends State<LandingView> {
     const HomeView(),
     const ShareView(), // This is for the Share
     Container(), // This is for the Promotion
-    Container(), // This is for the Profile
+    const ProfileView(), // This is for the Profile
   ];
 
   bool animate = true;

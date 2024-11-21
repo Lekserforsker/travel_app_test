@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:travel_app_test/constants/routes.dart';
 import 'package:travel_app_test/view_model/holiday_viewmodel.dart';
 import 'package:travel_app_test/view_model/home_viewmodel.dart';
+import 'package:travel_app_test/view_model/profile_viewmodel.dart';
 import 'package:travel_app_test/views/holiday_view/holiday_view.dart';
 import 'package:travel_app_test/views/home_view/home_view.dart';
 import 'package:travel_app_test/views/landing_view/landing_view.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => LandingViewmodel()),
         ChangeNotifierProvider(create: (context) => HomeViewmodel()),
         ChangeNotifierProvider(create: (context) => HolidayViewmodel()),
+        ChangeNotifierProvider(create: (context) => ProfileViewmodel()),
       ],
       child: MaterialApp(
         title: 'Travel App',
